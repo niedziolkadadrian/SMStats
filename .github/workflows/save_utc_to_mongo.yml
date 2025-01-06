@@ -1,0 +1,33 @@
+name: Save UTC Time to MongoDB
+
+on:
+  schedule:
+    # Runs daily at 0:00 UTC
+    - cron: '50 12 * * *'
+
+jobs:
+  save-utc:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pymongo
+
+      # Run the Python script
+      - name: Save UTC time to MongoDB
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+        run: python save_utc_to_mongo.py
