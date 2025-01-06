@@ -3,7 +3,7 @@ name: Save UTC Time to MongoDB
 on:
   schedule:
     # Runs daily at 0:00 UTC
-    - cron: '20 13 * * *'
+    - cron: '30 14 * * *'
 
 jobs:
   save-utc:
