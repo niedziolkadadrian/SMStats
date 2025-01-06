@@ -4,6 +4,8 @@ on:
   schedule:
     # Runs daily at 0:00 UTC
     - cron: '30 14 * * *'
+    - cron: '45 13 * * *'
+    - cron: '0 14 * * *'
 
 jobs:
   save-utc:
