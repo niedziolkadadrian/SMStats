@@ -3,9 +3,9 @@ name: Save UTC Time to MongoDB
 on:
   schedule:
     # Runs daily at 0:00 UTC
-    - cron: '30 14 * * *'
-    - cron: '45 13 * * *'
-    - cron: '0 14 * * *'
+    - cron: '30 15 * * *'
+    - cron: '45 14 * * *'
+    - cron: '0 15 * * *'
 
 jobs:
   save-utc:
@@ -20,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: 3.10.16
 
       # Install dependencies
       - name: Install dependencies
@@ -32,4 +32,4 @@ jobs:
       - name: Save UTC time to MongoDB
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
-        run: python save_utc_to_mongo.py
+        run: python scripts/save_utc_to_mongo.py
